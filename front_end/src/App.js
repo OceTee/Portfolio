@@ -1,10 +1,10 @@
-import './App.css';
+import './App.scss';
 import { About, Footer, Header, Skills, Testimonials, Works } from './Container';
 import { Navbar } from './Components';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Navbar />
       <Header />
       <About />
