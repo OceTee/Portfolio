@@ -1,16 +1,51 @@
-import React from 'react'
-import "./Navbar.scss"
+import React, { useState } from "react";
+import "./Navbar.scss";
+// import { images } from "../../Constants";
+import { HiMenuAlt4, HiX } from "react-icons/hi";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
-  return (
-    <div>
-      <nav>
-        <div>
-          <img src="#" alt="logo" />
-        </div>
-      </nav>
-    </div>
-  )
-}
+  const [toggle, setToggle] = useState(false);
 
-export default Navbar
+  return (
+    <nav className="app__navbar">
+      <div className="app__navbar-logo">
+        {/* <img src={ images.profile } alt="profile pic" /> */}
+        <h1 className="head-text img">TIMOTHY</h1>
+      </div>
+
+      <ul className="app__navbar-links">
+        {["Home", "About", "Work", "Skills", "Contact"].map((item) => (
+          <li className="app__flex p-text" key={`link-${item}`}>
+            <div />
+            <a href={`#${item}`}>{item}</a>
+          </li>
+        ))}
+      </ul>
+
+      <div className="app__navbar-menu">
+        <HiMenuAlt4 onClick={() => setToggle(true)} />
+
+        {toggle && (
+          <motion.div
+            whileInView={{ x: [300, 0] }}
+            transition={{ duration: 0.85, ease: "easeOut" }}
+          >
+            <HiX onClick={() => setToggle(false)} />
+            <ul>
+              {["Home", "About", "Work", "Skills", "Contact"].map((item) => (
+                <li key={item}>
+                  <a href={`#${item}`} onClick={() => setToggle(false)}>
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;

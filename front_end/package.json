@@ -1,6 +1,7 @@
 {
   "name": "front_end",
   "version": "0.1.0",
+  "homepage": "https://ocetee.github.io/Portfolio/front_end",
   "private": true,
   "dependencies": {
     "@sanity/client": "^6.20.0",
@@ -17,10 +18,12 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "",
+    "gh-pages": "^6.1.1",
     "sass": "^1.77.5"
-    
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
